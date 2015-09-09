@@ -1,0 +1,36 @@
+public class ParenMatcher {
+	static public boolean ParenMatch(String s) {
+
+		char[] letters = s.toCharArray();
+		IntStack stack = new IntStack(s.length());
+
+		for (char letter : letters) {
+			if ("(".indexOf(letter) >= 0) {
+				stack.push(10);
+			} else if((letter != ')') || (letter != '(')) {
+				return true;
+			}
+			
+			else if (stack.isEmpty()) {
+				return false;
+			} else if (letter == ')') {
+				if (!(stack.pop() == 10)) {
+					return false;
+				}
+			}
+		}
+		
+		if (stack.size() != 0) {
+			return false;
+		}
+		return true;
+
+	}
+}
+
+/**
+ * if (stack.isEmpty()) { return false;
+ * 
+ * } if (letter == ')') { if (!(stack.pop() == 10)) { return false; } }
+ * System.out.println(stack.peek());
+ */

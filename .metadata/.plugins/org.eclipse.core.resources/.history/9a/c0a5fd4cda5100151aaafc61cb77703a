@@ -1,0 +1,21 @@
+public class ParenMatcher {
+	static public boolean ParenMatch(String s) {
+		IntStack stack = new IntStack(s.length());
+
+		for(int i = 0; i < s.length(); i++) {
+		
+			if(s.charAt(i) == '(') {
+				stack.push(10);
+			} else if(s.charAt(i) == ')') {
+				stack.pop();
+			}
+			System.out.print(s.charAt(i) + stack.peek());
+		}
+		if(stack.peek() == 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+}

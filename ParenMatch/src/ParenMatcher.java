@@ -1,0 +1,28 @@
+public class ParenMatcher {
+	
+	static public boolean ParenMatch(String s) {
+
+		IntStack stack = new IntStack(s.length());
+
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '(') {
+				stack.push(10);
+			} else if (stack.isEmpty()) {
+				if (Character.isLetterOrDigit(s.charAt(i))) {
+					return true;
+				}
+				return false;
+			} else if (s.charAt(i) == ')') {
+				if (!(stack.pop() == 10)) {
+					return false;
+				}
+			}
+		}
+
+		if (stack.size() != 0) {
+			return false;
+		}
+		return true;
+
+	}
+}
